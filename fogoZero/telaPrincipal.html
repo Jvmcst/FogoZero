@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fogo Zero - Reportar novo incêndio</title>
+    <link rel="stylesheet" href="css/telaPrincipal.css">
+    <link rel="stylesheet" href="css/responsividades.css">
+</head>
+
+<body>
+    <header class="cabecalho">
+        <div class="cabecalho-conteudo">
+            <div class="marca">
+                <img src="img/logo.png" alt="Fogo Zero" class="marca-logo" width="50" height="50" />
+                <span class="marca-nome">Fogo Zero</span>
+            </div>
+            <nav class="nav-desktop">
+                <a href="#" class="nav-link nav-alertas">Alertas</a>
+
+                <label for="toggle-conta" class="nav-link" style="cursor: pointer;">
+                    Conta
+                </label>
+            </nav>
+        </div>
+    </header>
+
+    <main class="conteudo">
+        <section class="intro">
+            <h1>Reportar novo incêndio</h1>
+            <p class="subtitulo">Gestão de incidentes.</p>
+        </section>
+
+        <section class="cartao">
+            <div class="cartao-titulo">
+                <span class="icone-titulo">🔥</span>
+                <h2>Adicionar foco de incêndio</h2>
+            </div>
+
+            <!-- Por enquanto imagem, quando formos para js procuraremos uma forma de por um mapa interativo -->
+            <div class="campo">
+                <label>Localização do Foco</label>
+                <div class="mapa-moldura">
+                    <img src="img/valeDoAco.jpg" alt="Mapa de localização estático"
+                        style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    <button type="button" class="btn-geoloc" title="Usar minha localização">
+                        &#9678;
+                    </button>
+                </div>
+            </div>
+
+            <div class="campo">
+                <div class="linha-label-valor">
+                    <label>Intensidade Estimada</label>
+                    <span class="nivel-atual">Nível 4 (Alto)</span>
+                </div>
+                <input type="range" class="controle-intensidade" min="1" max="5" step="1" value="4" />
+                <div class="escala-intensidade">
+                    <span>1 · Baixo</span>
+                    <span>2</span>
+                    <span>3 · Médio</span>
+                    <span class="ativo">4</span>
+                    <span>5 · Crítico</span>
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="descricao">Descrição da Ocorrência</label>
+                <textarea id="descricao" maxlength="500"
+                    placeholder="Detalhes adicionais sobre direção do vento, estruturas próximas, etc."></textarea>
+            </div>
+
+            <div class="campo">
+                <label for="inputArquivos">Adicionar Imagens (Opcional)</label>
+                <div class="zona-arraste">
+                    <div class="zona-arraste-conteudo">
+                        <span class="icone-envio">&#9729;</span>
+                        <p>Arraste imagens ou clique para selecionar</p>
+                        <span class="zona-arraste-formato">JPG, PNG máx. 10MB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="acoes">
+                <button type="button" class="btn btn-cancelar">Cancelar</button>
+                <button type="button" class="btn btn-submeter">Submeter Alerta</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <div>Contato: <a href="mailto:fogo@fogozero.com.br">fogo@fogozero.com.br</a></div>
+            <div>&copy; 2026 Fogo Zero — Todos os direitos reservados.</div>
+        </div>
+    </footer>
+
+    <!-- menu da conta -->
+    <input type="checkbox" id="toggle-conta" hidden>
+
+    <label for="toggle-conta" class="painel-fundo"></label>
+
+    <aside class="painel-conta">
+        <div class="painel-cabecalho">
+            <h2>Minha conta</h2>
+            <label for="toggle-conta" class="painel-fechar" title="Fechar">&times;</label>
+        </div>
+
+        <div class="painel-corpo">
+            <div class="avatar-conta">&#9786;</div>
+
+            <form action="telaPrincipal.html">
+                <div class="campo-conta">
+                    <label>Nome completo</label>
+                    <input type="text" placeholder="Ex: Davi" />
+                </div>
+                <div class="campo-conta">
+                    <label>E-mail</label>
+                    <input type="email" placeholder="davi@email.com" />
+                </div>
+                <div class="campo-conta">
+                    <label>Telefone</label>
+                    <input type="tel" placeholder="(00) 00000-0000" maxlength="15" />
+                </div>
+                <div class="campo-conta">
+                    <label>Cidade / UF</label>
+                    <input type="text" placeholder="Cidade - UF" />
+                </div>
+
+                <div class="painel-rodape">
+                    <button type="submit" class="btn-painel btn-painel-principal">Salvar Dados</button>
+                    <a href="login.html" class="btn-painel btn-painel-secundario" style="text-decoration: none;">Sair da Conta</a>
+                </div>
+            </form>
+        </div>
+    </aside>
+
+</body>
+
+</html>
