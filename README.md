@@ -18,7 +18,7 @@ Através da interface do usuário, é possível realizar as seguintes ações:
 
 ## 🛠️ Tecnologias Utilizadas (Até o momento)
 * **HTML5:** Estruturação semântica de todas as páginas.
-* **CSS3:** Estilização visual, layout responsivo (adaptável a celulares e computadores) e interações visuais nativas (como o menu lateral via *checkbox hack*).
+* **CSS3:** Estilização visual, layout responsivo (adaptável a celulares e computadores) e interações visuais nativas (como o menu lateral via *checkbox*).
 
 ---
 
