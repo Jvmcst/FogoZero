@@ -26,7 +26,7 @@ Através da interface do usuário, é possível realizar as seguintes ações:
 
 Na versão atual (Etapa 1), o projeto foi construído **exclusivamente com HTML e CSS**, cumprindo os requisitos iniciais da disciplina. 
 
-A interface gráfica está totalmente montada, mas **a interatividade real do mapa e o processamento de dados não estão ativos**. A integração de um mapa funcional e as validações dinâmicas serão implementadas na próxima etapa do trabalho, com a introdução do **JavaScript**, conforme planejado para as próximas atividades.
+A interface gráfica está totalmente montada, mas **a interatividade real do mapa e o processamento de dados não estão ativos**. A integração de um mapa funcional e as validações dinâmicas serão implementadas na próxima etapa do trabalho, com a introdução do **JavaScript**, conforme planejado para as próximas atividades. **Foi feito o planejamento da tela principal com o modal, mas ele ainda não esta completamente implementado pela falta do Javascript do projeto. No futuro, com tudo implementado, essa tela será a principal do projeto e a atual será substituida.**
 
 ## 👥 Equipe
 
