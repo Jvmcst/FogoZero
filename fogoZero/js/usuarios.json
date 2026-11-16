@@ -1,0 +1,9 @@
+{
+  "usuarioAtivo": {
+    "id": 1,
+    "nome": "Fulano Ciclano da Silva",
+    "email": "fulnoa@email.com",
+    "telefone": "(31) 99999-0000",
+    "cidade": "Coronel Fabriciano - MG"
+  }
+}

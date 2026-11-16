@@ -13,31 +13,26 @@
 </head>
 
 <body class="pagina-mapa">
-    <header class="cabecalho">
-        <div class="cabecalho-conteudo">
-            <div class="marca">
-                <img src="img/logo.png" alt="Fogo Zero" class="marca-logo" width="50" height="50" />
-                <span class="marca-nome">Fogo Zero</span>
-            </div>
-            <nav class="nav-desktop">
-                <a href="#" class="nav-link nav-alertas">Alertas</a>
-                <label for="toggle-conta" class="nav-link" style="cursor: pointer;">Conta</label>
-                <button type="button" id="btn-tema" aria-label="Alternar tema">☾ Escuro</button>
-                <a href="reportar.html" class="btn-reportar">Reportar incêndio</a>
-            </nav>
+<header class="cabecalho">
+    <div class="cabecalho-conteudo">
+        <div class="marca">
+            <img src="img/logo.png" alt="Fogo Zero" class="marca-logo" width="50" height="50" />
+            <span class="marca-nome">Fogo Zero</span>
         </div>
-    </header>
+        <nav class="nav-desktop">
+            <a href="#" class="nav-link nav-alertas">Alertas</a>
+            <label for="toggle-conta" class="nav-link" style="cursor: pointer;">Conta</label>
+            <button type="button" id="btn-tema" aria-label="Alternar tema">☾ Escuro</button>
+            <a href="reportar.html" class="btn-reportar">Reportar incêndio</a>
+        </nav>
+    </div>
+</header>
 
-    <main>
-        <div id="mapa"></div>
-    </main>
+<main>
+    <div id="mapa"></div>
+</main>
 
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="js/mapa.js"></script>
-    <script src="js/temaEscuro.js"></script>
-</body>
-
-<!-- menu da conta -->
+<!-- menu da conta dentro do body -->
 <input type="checkbox" id="toggle-conta" hidden>
 
 <label for="toggle-conta" class="painel-fundo"></label>
@@ -53,29 +48,33 @@
 
         <form action="mapa.html">
             <div class="campo-conta">
-                <label>Nome completo</label>
-                <input type="text" placeholder="Ex: Davi" />
+                <label for="conta-nome">Nome completo</label>
+                <input type="text" id="conta-nome" placeholder="Ex: Davi" />
             </div>
             <div class="campo-conta">
-                <label>E-mail</label>
-                <input type="email" placeholder="davi@email.com" />
+                <label for="conta-email">E-mail</label>
+                <input type="email" id="conta-email" placeholder="davi@email.com" />
             </div>
             <div class="campo-conta">
-                <label>Telefone</label>
-                <input type="tel" placeholder="(00) 00000-0000" maxlength="15" />
+                <label for="conta-telefone">Telefone</label>
+                <input type="tel" id="conta-telefone" placeholder="(00) 00000-0000" maxlength="15" />
             </div>
             <div class="campo-conta">
-                <label>Cidade / UF</label>
-                <input type="text" placeholder="Cidade - UF" />
+                <label for="conta-cidade">Cidade / UF</label>
+                <input type="text" id="conta-cidade" placeholder="Cidade - UF" />
             </div>
 
             <div class="painel-rodape">
                 <button type="submit" class="btn-painel btn-painel-principal">Salvar Dados</button>
-                <a href="login.html" class="btn-painel btn-painel-secundario" style="text-decoration: none;">Sair da
-                    Conta</a>
+                <a href="login.html" class="btn-painel btn-painel-secundario" style="text-decoration: none;">Sair da Conta</a>
             </div>
         </form>
     </div>
 </aside>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/mapa.js"></script>
+<script src="js/temaEscuro.js"></script>
+</body>
 
 </html>
