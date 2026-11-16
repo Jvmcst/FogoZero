@@ -180,3 +180,96 @@ h1 {
     font-weight: bold;
     text-decoration: none;
 }
+
+/* Posição e estilo do botão de tema */
+.card {
+    position: relative;
+}
+
+#btn-tema {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #333333;
+    background-color: #f4f4f4;
+    border: 1px solid #dcdcdc;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btn-tema:hover {
+    border-color: #bd0915;
+    color: #c00b17;
+}
+
+/* Modo escuro */
+body.modo-escuro {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url("../img/mapaBlur.jpg");
+    color: #f0f0f0;
+}
+
+body.modo-escuro .card {
+    background-color: rgba(28, 28, 30, 0.96);
+    color: #f0f0f0;
+}
+
+body.modo-escuro h1 {
+    color: #e04848;
+}
+
+body.modo-escuro .subtitulo {
+    color: #b8a8a8;
+}
+
+body.modo-escuro .campo label {
+    color: #f0f0f0;
+}
+
+body.modo-escuro .input-container {
+    background-color: #2c2c30;
+    border: 1px solid #3f3f46;
+}
+
+body.modo-escuro .input-container:focus-within {
+    background-color: #35353a;
+}
+
+body.modo-escuro .input-container input {
+    color: #f0f0f0;
+}
+
+body.modo-escuro .input-container input::placeholder {
+    color: #888890;
+}
+
+body.modo-escuro .lembrar,
+body.modo-escuro .cadastro-link {
+    color: #a0a0a5;
+}
+
+body.modo-escuro .esqueci,
+body.modo-escuro .cadastro-link a {
+    color: #ff5c66;
+}
+
+body.modo-escuro .divisor {
+    background-color: #3a3a40;
+}
+
+body.modo-escuro #btn-tema {
+    background-color: #2c2c30;
+    border-color: #44444a;
+    color: #f0f0f0;
+}
+
+body.modo-escuro #btn-tema:hover {
+    border-color: #ff5c66;
+    color: #ff5c66;
+}

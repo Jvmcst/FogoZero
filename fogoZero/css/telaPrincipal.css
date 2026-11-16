@@ -431,3 +431,137 @@ footer.rodape {
     background: #9a1f1f;
     color: #ffffff;
 }
+
+/* Estilo do botão de tema no cabeçalho */
+#btn-tema {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    font: inherit;
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #1c1e21;
+    background-color: #fbfbfc;
+    border: 1px solid #dcdfe3;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#btn-tema:hover {
+    border-color: #9a1f1f;
+    color: #9a1f1f;
+}
+
+/* Modo escuro */
+body.modo-escuro {
+    background-color: #141416;
+    color: #f0f0f2;
+}
+
+body.modo-escuro header.cabecalho {
+    background-color: #1e1e22;
+    border-bottom-color: #34343b;
+}
+
+body.modo-escuro .marca-nome,
+body.modo-escuro .nav-alertas,
+body.modo-escuro .escala-intensidade .ativo,
+body.modo-escuro .rodape-conteudo a,
+body.modo-escuro .painel-cabecalho h2 {
+    color: #e04848;
+}
+
+body.modo-escuro .nav-link,
+body.modo-escuro .intro .subtitulo,
+body.modo-escuro .escala-intensidade,
+body.modo-escuro .icone-envio,
+body.modo-escuro .painel-fechar {
+    color: #a1a1aa;
+}
+
+body.modo-escuro .nav-link:hover {
+    color: #f0f0f2;
+}
+
+body.modo-escuro .cartao {
+    background-color: #1e1e22;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+body.modo-escuro .cartao-titulo {
+    border-bottom-color: #2c2c33;
+}
+
+body.modo-escuro .mapa-moldura {
+    border-color: #34343b;
+}
+
+body.modo-escuro .btn-geoloc {
+    background-color: #1e1e22;
+    border-color: #34343b;
+    color: #e04848;
+}
+
+body.modo-escuro textarea#descricao {
+    background-color: #26262b;
+    color: #f0f0f2;
+    border-color: #34343b;
+}
+
+body.modo-escuro .zona-arraste {
+    background-color: #26262b;
+    border-color: #34343b;
+    color: #f0f0f2;
+}
+
+body.modo-escuro .zona-arraste-formato {
+    color: #a1a1aa;
+}
+
+body.modo-escuro .btn-cancelar,
+body.modo-escuro .btn-painel-secundario {
+    background-color: #26262b;
+    border-color: #34343b;
+    color: #f0f0f2;
+}
+
+body.modo-escuro footer.rodape {
+    background-color: #1e1e22;
+    border-top-color: #34343b;
+    color: #a1a1aa;
+}
+
+body.modo-escuro .painel-conta {
+    background-color: #1e1e22;
+    color: #f0f0f2;
+}
+
+body.modo-escuro .painel-cabecalho,
+body.modo-escuro .painel-rodape {
+    border-color: #34343b;
+}
+
+body.modo-escuro .avatar-conta {
+    background-color: #26262b;
+    border-color: #34343b;
+    color: #a1a1aa;
+}
+
+body.modo-escuro .campo-conta input {
+    background-color: #26262b;
+    border-color: #34343b;
+    color: #f0f0f2;
+}
+
+body.modo-escuro #btn-tema {
+    background-color: #26262b;
+    border-color: #34343b;
+    color: #f0f0f2;
+}
+
+body.modo-escuro #btn-tema:hover {
+    border-color: #e04848;
+    color: #e04848;
+}
