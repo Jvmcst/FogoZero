@@ -2,15 +2,21 @@
   {
     "id": 1,
     "local": "Bairro Floresta - Coronel Fabriciano",
+    "lat": -19.5038,
+    "lng": -42.6339,
+    "nivel": 5,
     "intensidade": "Nível 5 (Crítico)",
     "descricao": "Fumaça densa próxima à mata do Sapucaia.",
     "data": "16/11/2026 - 08:30",
     "status": "Em combate",
-    "imagem": ""
+    "imagem": "img/valeDoAco.jpg"
   },
   {
     "id": 2,
     "local": "Serra dos Cocais - Coronel Fabriciano",
+    "lat": -19.4425,
+    "lng": -42.6840,
+    "nivel": 3,
     "intensidade": "Nível 3 (Médio)",
     "descricao": "Foco de queimada em vegetação rasteira próximo à estrada.",
     "data": "16/11/2026 - 09:15",
@@ -20,14 +26,21 @@
   {
     "id": 3,
     "local": "Bairro Giovaninni - Coronel Fabriciano",
+    "lat": -19.5222,
+    "lng": -42.6285,
+    "nivel": 2,
     "intensidade": "Nível 2 (Baixo)",
     "descricao": "Queima de entulho em lote vago.",
     "data": "15/11/2026 - 17:40",
     "status": "Controlado",
     "imagem": ""
-  },{
+  },
+  {
     "id": 4,
     "local": "Bairro Caladinho - Coronel Fabriciano",
+    "lat": -19.5348,
+    "lng": -42.6362,
+    "nivel": 1,
     "intensidade": "Nível 1 (Baixo)",
     "descricao": "Pequeno foco de queima de folhas secas em terreno baldio próximo à Av. Magalhães Pinto.",
     "data": "16/11/2026 - 07:50",
@@ -37,6 +50,9 @@
   {
     "id": 5,
     "local": "Bairro Caladão - Coronel Fabriciano",
+    "lat": -19.5108,
+    "lng": -42.6425,
+    "nivel": 2,
     "intensidade": "Nível 2 (Baixo)",
     "descricao": "Fumaça visível em encosta com mato seco atrás da área comercial.",
     "data": "16/11/2026 - 08:45",
@@ -46,6 +62,9 @@
   {
     "id": 6,
     "local": "Bairro Amaro Lanari - Coronel Fabriciano",
+    "lat": -19.5418,
+    "lng": -42.6082,
+    "nivel": 3,
     "intensidade": "Nível 3 (Médio)",
     "descricao": "Queimada em vegetação rasteira próxima à margem do Rio Piracicaba com risco de avanço.",
     "data": "16/11/2026 - 09:30",
@@ -55,10 +74,37 @@
   {
     "id": 7,
     "local": "Bairro Giovannini - Coronel Fabriciano",
+    "lat": -19.5188,
+    "lng": -42.6242,
+    "nivel": 4,
     "intensidade": "Nível 4 (Alto)",
     "descricao": "Chamas altas em área de mata próxima a residências e rede elétrica, com vento moderado.",
     "data": "16/11/2026 - 10:05",
     "status": "Em combate",
+    "imagem": "img/valeDoAco.jpg"
+  },
+  {
+    "id": 8,
+    "local": "Parque Ipanema - Ipatinga",
+    "lat": -19.4685,
+    "lng": -42.5412,
+    "nivel": 4,
+    "intensidade": "Nível 4 (Alto)",
+    "descricao": "Foco de incêndio em vegetação seca próximo à área de preservação e pista de caminhada.",
+    "data": "16/11/2026 - 10:40",
+    "status": "Em combate",
+    "imagem": ""
+  },
+  {
+    "id": 9,
+    "local": "Bairro Olaria - Timóteo",
+    "lat": -19.5612,
+    "lng": -42.6445,
+    "nivel": 3,
+    "intensidade": "Nível 3 (Médio)",
+    "descricao": "Queimada em encosta próxima à área residencial com fumaça intensa.",
+    "data": "16/11/2026 - 11:10",
+    "status": "Em análise",
     "imagem": ""
   }
 ]
