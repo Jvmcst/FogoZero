@@ -5,15 +5,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fogo Zero - Reportar novo incêndio</title>
-    <link rel="stylesheet" href="css/telaPrincipal.css">
+    <link rel="stylesheet" href="css/reportar.css">
     <link rel="stylesheet" href="css/responsividades.css">
     <link rel="stylesheet" href="css/modal.css">
 
-    <script>
-        function alteraModal(classe) {
-            document.getElementById("modal").setAttribute("class", classe)
-        }
-    </script>
+
 </head>
 
 <body>
@@ -25,11 +21,10 @@
             </div>
             <nav class="nav-desktop">
                 <a href="#" class="nav-link nav-alertas">Alertas</a>
-
-                <label for="toggle-conta" class="nav-link" style="cursor: pointer;">
-                    Conta
-                </label>
+                <label for="toggle-conta" class="nav-link" style="cursor: pointer;">Conta</label>
                 <button type="button" id="btn-tema" aria-label="Alternar tema">☾ Escuro</button>
+                <!--<a href="reportar.html" class="btn-reportar">Reportar incêndio</a>-->
+                <a class="btn-reportar">Reportar incêndio</a>
             </nav>
         </div>
     </header>
@@ -79,7 +74,7 @@
                     placeholder="Detalhes adicionais sobre direção do vento, estruturas próximas, etc."></textarea>
             </div>
 
-            <div class="campo">
+            <!--<div class="campo">
                 <label for="inputArquivos">Adicionar Imagens (Opcional)</label>
                 <div class="zona-arraste">
                     <div class="zona-arraste-conteudo">
@@ -88,10 +83,31 @@
                         <span class="zona-arraste-formato">JPG, PNG máx. 10MB</span>
                     </div>
                 </div>
+            </div>-->
+
+            <div class="campo">
+                <label for="inputArquivos">Adicionar Imagens (Opcional)</label>
+
+                <!-- Input real escondido, aceitando múltiplos JPG e PNG -->
+                <input type="file" id="inputArquivos" accept="image/jpeg, image/png" multiple hidden>
+
+                <!-- Sua zona de arraste agora funciona ao clicar e ao arrastar -->
+                <div class="zona-arraste" id="zonaArraste">
+                    <div class="zona-arraste-conteudo">
+                        <span class="icone-envio">☁</span>
+                        <p>Arraste imagens ou clique para selecionar</p>
+                        <span class="zona-arraste-formato">JPG, PNG máx. 10MB</span>
+                    </div>
+                </div>
+
+                <!-- Grade responsiva onde as imagens selecionadas vão aparecer -->
+                <div class="grade-previews" id="gradePreviews"></div>
             </div>
 
+
             <div class="acoes">
-                <button type="button" class="btn btn-cancelar">Cancelar</button>
+                <!--<button type="button" class="btn btn-cancelar">Cancelar</button>-->
+                <a href="mapa.html" class="btn btn-cancelar">Cancelar</a>
                 <button type="button" class="btn btn-submeter" onclick="alteraModal('on')">Submeter Alerta</button>
             </div>
         </section>
@@ -118,7 +134,7 @@
         <div class="painel-corpo">
             <div class="avatar-conta">&#9786;</div>
 
-            <form action="telaPrincipal.html">
+            <form action="reportar.html">
                 <div class="campo-conta">
                     <label>Nome completo</label>
                     <input type="text" placeholder="Ex: Davi" />
@@ -156,7 +172,8 @@
             </footer>
         </section>
     </div>
-    <script src="js/fogo.js"></script>
+    <script src="js/reportar.js"></script>
+    <script src="js/temaEscuro.js"></script>
 </body>
 
 </html>

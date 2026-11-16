@@ -1,0 +1,45 @@
+.pagina-mapa {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.pagina-mapa main {
+  flex: 1;          /* o mapa ocupa todo o espaço abaixo do cabeçalho */
+  min-height: 0;
+}
+
+#mapa {
+  width: 100%;
+  height: 100%;
+}
+
+/* escurece os tiles do mapa */
+body.modo-escuro .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.9) contrast(0.9);
+}
+
+/* popups */
+body.modo-escuro .leaflet-popup-content-wrapper,
+body.modo-escuro .leaflet-popup-tip {
+  background-color: #1e1e22;
+  color: #f0f0f2;
+}
+
+/* botões de zoom */
+body.modo-escuro .leaflet-bar a {
+  background-color: #1e1e22;
+  color: #f0f0f2;
+  border-color: #34343b;
+}
+
+/* créditos no canto */
+body.modo-escuro .leaflet-control-attribution {
+  background-color: rgba(30, 30, 34, 0.8);
+  color: #a1a1aa;
+}
+
+body.modo-escuro .leaflet-control-attribution a {
+  color: #e04848;
+}

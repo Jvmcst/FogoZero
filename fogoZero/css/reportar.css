@@ -7,7 +7,6 @@
 html,
 body {
     height: 100%;
-    overflow-x: hidden;
 }
 
 body {
@@ -455,6 +454,32 @@ footer.rodape {
     color: #9a1f1f;
 }
 
+.btn-reportar {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 14px;
+    font: inherit;
+    font-size: 9.5pt;
+    font-weight: 600;
+    color: #ffffff;
+    background-color: #9a1f1f;
+    border: 1px solid #9a1f1f;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reportar:hover {
+  border-color: #8b1515;
+    color: #d1cfcf;
+}
+
+/* para tirar a transição do cabeçalho de uma página para outra*/
+html {
+    scrollbar-gutter: stable;
+}
+
 /* Modo escuro */
 body.modo-escuro {
     background-color: #141416;
@@ -565,4 +590,81 @@ body.modo-escuro #btn-tema {
 body.modo-escuro #btn-tema:hover {
     border-color: #e04848;
     color: #e04848;
+}
+
+/*parte de aceitar arquivos jpg e png*/
+/* Torna a zona clicável e adiciona feedback visual */
+.zona-arraste {
+    border: 1.5px dashed #dcdfe3;
+    border-radius: 10px;
+    background: #fbfbfc;
+    padding: 26px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.zona-arraste:hover,
+.zona-arraste.arrastando {
+    border-color: #9a1f1f;
+    background: #fdf6f6;
+}
+
+.zona-arraste-formato {
+    display: block;
+    font-size: 8.625pt;
+    color: #6b7076;
+    margin-top: 4px;
+}
+
+/* Grade responsiva para as miniaturas */
+.grade-previews {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+    margin-top: 14px;
+}
+
+.grade-previews:empty {
+    display: none;
+}
+
+.item-preview {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #dcdfe3;
+    background: #f4f5f7;
+}
+
+.item-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.btn-remover-img {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(28, 30, 33, 0.75);
+    color: #ffffff;
+    font-size: 11pt;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.btn-remover-img:hover {
+    background: #9a1f1f;
 }

@@ -97,44 +97,9 @@
 }
 
 /* 2. redimensionamento: tela principal */
-@media (max-width: 600px) {
-    header.cabecalho>div.cabecalho-conteudo {
-        padding: 0 12px;
-        height: 60px;
-    }
-
-    .marca {
-        gap: 6px;
-    }
-
-    .marca-logo {
-        width: 36px;
-        height: 36px;
-    }
-
-    .marca-nome {
-        font-size: 12pt;
-        white-space: nowrap;
-    }
-
-    .nav-desktop {
-        gap: 12px;
-    }
-
-    .nav-link {
-        font-size: 9.5pt;
-    }
-
-    #btn-tema {
-        padding: 5px 10px;
-        font-size: 8.5pt;
-        white-space: nowrap;
-    }
-}
-
 @media (min-width: 768px) {
     header.cabecalho>div.cabecalho-conteudo {
-        padding: 0 25px;
+        padding: 0 28px;
     }
 
     body>main.conteudo {
@@ -171,7 +136,7 @@
         align-items: center;
         justify-content: center;
         gap: 15px;
-        padding: 22px 25px;
+        padding: 22px 28px;
     }
 
     .painel-conta {
