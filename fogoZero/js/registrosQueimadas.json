@@ -5,7 +5,8 @@
     "intensidade": "Nível 5 (Crítico)",
     "descricao": "Fumaça densa próxima à mata do Sapucaia.",
     "data": "16/11/2026 - 08:30",
-    "status": "Em combate"
+    "status": "Em combate",
+    "imagem": ""
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "intensidade": "Nível 3 (Médio)",
     "descricao": "Foco de queimada em vegetação rasteira próximo à estrada.",
     "data": "16/11/2026 - 09:15",
-    "status": "Em análise"
+    "status": "Em análise",
+    "imagem": ""
   },
   {
     "id": 3,
@@ -21,14 +23,16 @@
     "intensidade": "Nível 2 (Baixo)",
     "descricao": "Queima de entulho em lote vago.",
     "data": "15/11/2026 - 17:40",
-    "status": "Controlado"
+    "status": "Controlado",
+    "imagem": ""
   },{
     "id": 4,
     "local": "Bairro Caladinho - Coronel Fabriciano",
     "intensidade": "Nível 1 (Baixo)",
     "descricao": "Pequeno foco de queima de folhas secas em terreno baldio próximo à Av. Magalhães Pinto.",
     "data": "16/11/2026 - 07:50",
-    "status": "Controlado"
+    "status": "Controlado",
+    "imagem": ""
   },
   {
     "id": 5,
@@ -36,7 +40,8 @@
     "intensidade": "Nível 2 (Baixo)",
     "descricao": "Fumaça visível em encosta com mato seco atrás da área comercial.",
     "data": "16/11/2026 - 08:45",
-    "status": "Em análise"
+    "status": "Em análise",
+    "imagem": ""
   },
   {
     "id": 6,
@@ -44,7 +49,8 @@
     "intensidade": "Nível 3 (Médio)",
     "descricao": "Queimada em vegetação rasteira próxima à margem do Rio Piracicaba com risco de avanço.",
     "data": "16/11/2026 - 09:30",
-    "status": "Em combate"
+    "status": "Em combate",
+    "imagem": ""
   },
   {
     "id": 7,
@@ -52,6 +58,7 @@
     "intensidade": "Nível 4 (Alto)",
     "descricao": "Chamas altas em área de mata próxima a residências e rede elétrica, com vento moderado.",
     "data": "16/11/2026 - 10:05",
-    "status": "Em combate"
+    "status": "Em combate",
+    "imagem": ""
   }
 ]
