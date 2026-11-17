@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fogo Zero - Reportar novo incêndio</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="css/reportar.css">
     <link rel="stylesheet" href="css/responsividades.css">
     <link rel="stylesheet" href="css/modal.css">
@@ -13,15 +14,15 @@
 <body>
 <header class="cabecalho">
     <div class="cabecalho-conteudo">
-        <div class="marca">
+        <a href="mapa.html" class="marca">
             <img src="img/logo.png" alt="Fogo Zero" class="marca-logo" width="50" height="50" />
             <span class="marca-nome">Fogo Zero</span>
-        </div>
+        </a>
         <nav class="nav-desktop">
             <a href="#" class="nav-link nav-alertas">Alertas</a>
             <label for="toggle-conta" class="nav-link" style="cursor: pointer;">Conta</label>
             <button type="button" id="btn-tema" aria-label="Alternar tema">☾ Escuro</button>
-            <a class="btn-reportar">Reportar incêndio</a>
+            <a href="mapa.html" class="btn-reportar">Ver Mapa</a>
         </nav>
     </div>
 </header>
@@ -39,23 +40,24 @@
         </div>
 
         <div class="campo">
-            <label>Localização do Foco</label>
+            <label for="local-foco">Localização do Foco</label>
             <div class="mapa-moldura">
-                <img src="img/valeDoAco.jpg" alt="Mapa de localização estático"
-                     style="width: 100%; height: 100%; object-fit: cover; display: block;">
-                <button type="button" class="btn-geoloc" title="Usar minha localização">
+                <div id="mapa-reportar"></div>
+                <button type="button" id="btnGeoloc" class="btn-geoloc" title="Usar minha localização">
                     &#9678;
                 </button>
             </div>
+            <input type="text" id="local-foco" class="input-local-foco"
+                   placeholder="Clique no mapa acima para marcar o ponto ou digite o bairro/referência" />
         </div>
 
         <div class="campo">
             <div class="linha-label-valor">
-                <label>Intensidade Estimada</label>
-                <span class="nivel-atual">Nível 4 (Alto)</span>
+                <label for="controleIntensidade">Intensidade Estimada</label>
+                <span class="nivel-atual" id="nivelAtualTexto">Nível 4 (Alto)</span>
             </div>
-            <input type="range" class="controle-intensidade" min="1" max="5" step="1" value="4" />
-            <div class="escala-intensidade">
+            <input type="range" id="controleIntensidade" class="controle-intensidade" min="1" max="5" step="1" value="4" />
+            <div class="escala-intensidade" id="escalaIntensidade">
                 <span>1 · Baixo</span>
                 <span>2</span>
                 <span>3 · Médio</span>
@@ -87,7 +89,7 @@
 
         <div class="acoes">
             <a href="mapa.html" class="btn btn-cancelar">Cancelar</a>
-            <button type="button" class="btn btn-submeter" onclick="alteraModal('on')">Submeter Alerta</button>
+            <button type="button" id="btnSubmeter" class="btn btn-submeter">Submeter Alerta</button>
         </div>
     </section>
 </main>
@@ -144,10 +146,11 @@
     <section>
         <header id="modal-titulo">Alerta submetido com sucesso</header>
         <div>
-            <p>Obrigado. Recebemos o seu alerta e vamos analisá-lo em breve.</p>
+            <p>Obrigado. Recebemos o seu alerta e ele já está visível no mapa e na lista de alertas.</p>
         </div>
         <footer>
-            <button class="modal-btn modal-btn-primario" onclick="alteraModal('off')">Fechar</button>
+            <a href="mapa.html" class="modal-btn modal-btn-secundario" style="text-decoration: none;">Ver no Mapa</a>
+            <button type="button" class="modal-btn modal-btn-primario" onclick="alteraModal('off')">Fechar</button>
         </footer>
     </section>
 </div>
@@ -180,6 +183,7 @@
     </section>
 </div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/modal.js"></script>
 <script src="js/reportar.js"></script>
 <script src="js/temaEscuro.js"></script>
