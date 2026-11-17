@@ -204,3 +204,47 @@
         width: 420px;
     }
 }
+
+/* 3. Ajustes específicos para iPhone 16 (393x852) e telas menores */
+@media (max-width: 600px) {
+    header.cabecalho {
+        height: auto;
+    }
+
+    header.cabecalho > div.cabecalho-conteudo {
+        height: auto;
+        min-height: 60px;
+        padding: 10px 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .marca-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .marca-nome {
+        font-size: 13pt;
+    }
+
+    .nav-desktop {
+        gap: 10px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .nav-link {
+        font-size: 9.25pt;
+    }
+
+    #btn-tema,
+    .btn-reportar {
+        padding: 6px 10px;
+        font-size: 8.75pt;
+    }
+
+    body.pagina-mapa main {
+        height: calc(100vh - 60px);
+    }
+}

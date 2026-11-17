@@ -19,10 +19,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap'
 }).addTo(mapa);
 
-// Paleta de cores por nível de intensidade (1 a 5)
+// Paleta de cores e raio geográfico real (em metros) por nível de intensidade (1 a 5)
 const cores = ['', '#fcc419', '#ff922b', '#f76707', '#e03131', '#a61e4d'];
+const raiosEmMetros = [0, 180, 280, 400, 550, 750];
 
-// Camada dedicada para os círculos de incêndio (facilita atualizar quando houver adição/remoção)
+// Camada dedicada para os círculos de incêndio
 const camadaFocos = L.layerGroup().addTo(mapa);
 
 // Lê os registros de js/registrosQueimadas.json, mescla com localStorage e desenha no mapa
@@ -49,11 +50,12 @@ async function carregarFocosNoMapa() {
       const nivel = Math.min(5, Math.max(1, Number(f.nivel) || 1));
       const cor = cores[nivel];
 
-      const marcador = L.circleMarker([f.lat, f.lng], {
-        radius: 6 + nivel * 3,
+      // L.circle usa raio em metros reais, mantendo a proporção exata com ruas e bairros em qualquer zoom
+      const marcador = L.circle([f.lat, f.lng], {
+        radius: raiosEmMetros[nivel],
         color: cor,
         fillColor: cor,
-        fillOpacity: 0.65,
+        fillOpacity: 0.45,
         weight: 2
       });
 
@@ -100,7 +102,7 @@ async function carregarDadosUsuario() {
   }
 }
 
-// Funções globais para integração com o menu de Alertas (Bloco 3)
+// Funções globais para integração com o menu de Alertas
 window.recarregarMapaFocos = carregarFocosNoMapa;
 window.focarNoMapa = function (lat, lng) {
   if (typeof lat === 'number' && typeof lng === 'number') {
