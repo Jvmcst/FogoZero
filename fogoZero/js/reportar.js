@@ -1,30 +1,3 @@
-/*Parte do modal do botao submeter*/
-function alteraModal(classe) {
-    document.getElementById("modal").setAttribute("class", classe);
-
-    // Limpa os dados do formulário
-    if (classe === 'off') {
-        // Limpa o campo de descrição
-        const descricao = document.getElementById('descricao');
-        if (descricao) descricao.value = '';
-
-        // Reseta o slider de intensidade 
-        const intensidade = document.querySelector('.controle-intensidade');
-        if (intensidade) {
-            intensidade.value = 1;
-            intensidade.dispatchEvent(new Event('input')); // Atualiza o texto do nível, se houver
-        }
-
-        // Limpa as imagens selecionadas 
-        if (typeof limparImagens === 'function') {
-            limparImagens();
-        }
-
-        // Se houver uma tag <form>, reseta todos os outros inputs
-        const form = document.querySelector('form');
-        if (form) form.reset();
-    }
-}
 
 /*Parte de receber imagens no reportar alerta*/ 
 const zonaArraste = document.getElementById('zonaArraste');

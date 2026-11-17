@@ -1,4 +1,8 @@
-#modal.on {
+/* =========================================================
+   MODAIS E OVERLAYS BLOQUEANTES (Confirmação, Alertas e Detalhes)
+   ========================================================= */
+#modal.on,
+#modal-alertas.on {
     position: fixed;
     inset: 0;
     z-index: 2000;
@@ -6,32 +10,75 @@
     align-items: center;
     justify-content: center;
     padding: 16px;
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.5);
 }
 
-#modal.off {
+#modal-detalhe-alerta.on {
+    position: fixed;
+    inset: 0;
+    z-index: 2100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+#modal.off,
+#modal-alertas.off,
+#modal-detalhe-alerta.off {
     display: none;
 }
 
-#modal > section {
+#modal > section,
+#modal-alertas > section,
+#modal-detalhe-alerta > section {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 420px;
-    padding: 20px 16px 16px;
+    max-width: 440px;
+    max-height: 85vh;
+    padding: 20px 18px 18px;
     background: #ffffff;
     color: #1c1e21;
     border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(20, 20, 20, 0.08);
+    box-shadow: 0 12px 32px rgba(20, 20, 20, 0.18);
 }
 
-#modal > section > header {
-    padding-bottom: 16px;
-    margin-bottom: 20px;
+#modal-alertas > section {
+    max-width: 520px;
+}
+
+#modal > section > header,
+#modal-alertas > section > header,
+#modal-detalhe-alerta > section > header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
     border-bottom: 1px solid #f4f5f7;
     font-size: 13.5pt;
     font-weight: 800;
     color: #9a1f1f;
+}
+
+.modal-fechar-x {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #6b7076;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.modal-fechar-x:hover {
+    background: #f4f5f7;
+    color: #1c1e21;
 }
 
 #modal > section > div:nth-child(2) {
@@ -44,15 +91,18 @@
     color: #6b7076;
 }
 
-#modal > section > footer {
+#modal > section > footer,
+#modal-alertas > section > footer,
+#modal-detalhe-alerta > section > footer {
     display: grid;
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 10px;
+    margin-top: 16px;
 }
 
 .modal-btn {
-    min-height: 48px;
-    padding: 0 22px;
+    min-height: 46px;
+    padding: 0 20px;
     border: none;
     border-radius: 10px;
     font: inherit;
@@ -62,6 +112,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: background 0.2s;
 }
 
 .modal-btn-primario {
@@ -73,16 +124,208 @@
     background: #831a1a;
 }
 
-body.modo-escuro #modal > section {
+.modal-btn-secundario {
+    background: #f1f3f5;
+    color: #1c1e21;
+}
+
+.modal-btn-secundario:hover {
+    background: #e2e6ea;
+}
+
+/* =========================================================
+   LISTA DE ALERTAS (Apenas endereço + hover + remoção)
+   ========================================================= */
+.lista-alertas-corpo {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 4px;
+}
+
+.item-alerta-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fafafa;
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item-alerta-card:hover {
+    background: #fff5f5;
+    border-color: #9a1f1f;
+    transform: translateX(3px);
+    box-shadow: 0 4px 12px rgba(154, 31, 31, 0.1);
+}
+
+.item-alerta-endereco {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: #1c1e21;
+}
+
+.btn-remover-alerta {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border: 1px solid #f1c0c0;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #9a1f1f;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.btn-remover-alerta:hover {
+    background: #9a1f1f;
+    color: #ffffff;
+}
+
+.lista-vazia-msg {
+    text-align: center;
+    padding: 32px 16px;
+    font-size: 11pt;
+    font-weight: 600;
+    color: #6b7076;
+}
+
+/* =========================================================
+   DETALHES DO ALERTA SELECIONADO
+   ========================================================= */
+.detalhe-alerta-corpo {
+    flex: 1;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 10pt;
+}
+
+.detalhe-linha {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.detalhe-linha:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.detalhe-rotulo {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: #6b7076;
+}
+
+.detalhe-valor {
+    font-size: 10.5pt;
+    color: #1c1e21;
+    line-height: 1.45;
+}
+
+.badge-intensidade {
+    display: inline-block;
+    width: fit-content;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+.detalhe-alerta-img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-top: 4px;
+    border: 1px solid #e5e7eb;
+}
+
+/* =========================================================
+   MODO ESCURO
+   ========================================================= */
+body.modo-escuro #modal > section,
+body.modo-escuro #modal-alertas > section,
+body.modo-escuro #modal-detalhe-alerta > section {
     background-color: #1e1e22;
     color: #f0f0f2;
 }
 
-body.modo-escuro #modal > section > header {
+body.modo-escuro #modal > section > header,
+body.modo-escuro #modal-alertas > section > header,
+body.modo-escuro #modal-detalhe-alerta > section > header {
     border-bottom-color: #2c2c33;
     color: #e04848;
 }
 
-body.modo-escuro #modal p {
+body.modo-escuro .modal-fechar-x {
     color: #a1a1aa;
+}
+
+body.modo-escuro .modal-fechar-x:hover {
+    background: #2c2c33;
+    color: #f0f0f2;
+}
+
+body.modo-escuro #modal p,
+body.modo-escuro .lista-vazia-msg,
+body.modo-escuro .detalhe-rotulo {
+    color: #a1a1aa;
+}
+
+body.modo-escuro .modal-btn-secundario {
+    background: #2c2c33;
+    color: #f0f0f2;
+}
+
+body.modo-escuro .modal-btn-secundario:hover {
+    background: #3a3a42;
+}
+
+body.modo-escuro .item-alerta-card {
+    background: #26262b;
+    border-color: #323238;
+}
+
+body.modo-escuro .item-alerta-card:hover {
+    background: #2f2326;
+    border-color: #e04848;
+}
+
+body.modo-escuro .item-alerta-endereco,
+body.modo-escuro .detalhe-valor {
+    color: #f0f0f2;
+}
+
+body.modo-escuro .btn-remover-alerta {
+    background: #1e1e22;
+    border-color: #5c2b2b;
+    color: #e04848;
+}
+
+body.modo-escuro .btn-remover-alerta:hover {
+    background: #e04848;
+    color: #ffffff;
+}
+
+body.modo-escuro .detalhe-linha {
+    border-bottom-color: #2c2c33;
+}
+
+body.modo-escuro .detalhe-alerta-img {
+    border-color: #323238;
 }

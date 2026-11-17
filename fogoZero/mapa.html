@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/reportar.css">
     <link rel="stylesheet" href="css/responsividades.css">
     <link rel="stylesheet" href="css/mapa.css">
+    <link rel="stylesheet" href="css/modal.css">
 </head>
 
 <body class="pagina-mapa">
@@ -72,8 +73,38 @@
     </div>
 </aside>
 
+<!-- Modal de Listagem de Alertas -->
+<div id="modal-alertas" class="off" role="dialog" aria-modal="true" aria-labelledby="titulo-modal-alertas">
+    <section>
+        <header>
+            <span id="titulo-modal-alertas">Alertas de Incêndio</span>
+            <button type="button" class="modal-fechar-x" onclick="fecharModalAlertas()" title="Fechar">&times;</button>
+        </header>
+        <div id="lista-alertas-container" class="lista-alertas-corpo"></div>
+        <footer>
+            <button type="button" class="modal-btn modal-btn-secundario" onclick="fecharModalAlertas()">Fechar</button>
+        </footer>
+    </section>
+</div>
+
+<!-- Modal de Detalhes do Alerta (Overlay bloqueante) -->
+<div id="modal-detalhe-alerta" class="off" role="dialog" aria-modal="true" aria-labelledby="titulo-detalhe-alerta">
+    <section>
+        <header>
+            <span id="titulo-detalhe-alerta">Detalhes do Alerta</span>
+            <button type="button" class="modal-fechar-x" onclick="fecharModalDetalhe()" title="Fechar">&times;</button>
+        </header>
+        <div id="detalhe-alerta-conteudo" class="detalhe-alerta-corpo"></div>
+        <footer>
+            <button type="button" id="btn-detalhe-ver-mapa" class="modal-btn modal-btn-secundario" style="display: none;">Ver no mapa</button>
+            <button type="button" class="modal-btn modal-btn-primario" onclick="fecharModalDetalhe()">Fechar</button>
+        </footer>
+    </section>
+</div>
+
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/mapa.js"></script>
+<script src="js/modal.js"></script>
 <script src="js/temaEscuro.js"></script>
 </body>
 
