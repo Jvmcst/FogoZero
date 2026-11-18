@@ -329,3 +329,13 @@ body.modo-escuro .detalhe-linha {
 body.modo-escuro .detalhe-alerta-img {
     border-color: #323238;
 }
+.detalhe-alerta-img-vazia {
+    height: 130px;
+    object-fit: contain;
+    padding: 20px;
+    background-color: #f4f5f7;
+}
+
+body.modo-escuro .detalhe-alerta-img-vazia {
+    background-color: #e5e7eb;
+}

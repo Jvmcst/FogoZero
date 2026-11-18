@@ -197,23 +197,28 @@ function abrirDetalhesAlerta(alerta) {
     // Campo de imagem
     const linhaImg = document.createElement('div');
     linhaImg.className = 'detalhe-linha';
+
     const rotuloImg = document.createElement('span');
     rotuloImg.className = 'detalhe-rotulo';
     rotuloImg.textContent = 'Registro Visual';
     linhaImg.appendChild(rotuloImg);
 
-    if (alerta.imagem && alerta.imagem.trim() !== '') {
-        const img = document.createElement('img');
-        img.src = alerta.imagem;
-        img.alt = `Imagem do foco em ${alerta.local}`;
-        img.className = 'detalhe-alerta-img';
-        linhaImg.appendChild(img);
-    } else {
-        const semImg = document.createElement('span');
-        semImg.className = 'detalhe-valor';
-        semImg.textContent = 'Nenhuma imagem anexada.';
-        linhaImg.appendChild(semImg);
-    }
+    const imagemPadrao = 'img/imagemVazia.png';
+    const temImagem = alerta.imagem && alerta.imagem.trim() !== '';
+
+    const img = document.createElement('img');
+    img.src = temImagem ? alerta.imagem : imagemPadrao;
+    img.alt = temImagem ? `Imagem do foco em ${alerta.local}` : 'Sem imagem registrada para este foco';
+    img.className = temImagem ? 'detalhe-alerta-img' : 'detalhe-alerta-img detalhe-alerta-img-vazia';
+
+    // Garante o fallback caso alguma imagem registrada falhe ao carregar
+    img.onerror = () => {
+        img.onerror = null;
+        img.src = imagemPadrao;
+        img.classList.add('detalhe-alerta-img-vazia');
+    };
+
+    linhaImg.appendChild(img);
     corpoDetalhe.appendChild(linhaImg);
 
     // Exibe botão "Ver no mapa" se estiver na tela mapa.html e houver coordenadas
