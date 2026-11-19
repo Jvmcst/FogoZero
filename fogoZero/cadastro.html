@@ -10,65 +10,123 @@
 </head>
 
 <body>
-    <main class="container">
-        <section class="card cadastro-card">
-            <button type="button" id="btn-tema" aria-label="Alternar tema">☾ Escuro</button>
-            <div class="logo">
-               <img src="img/logo.png" alt="Logo Fogo Zero">
-             </div>
-            <h1>Fogo Zero</h1>
-            <p class="subtitulo">Crie sua conta</p>
+<main class="container">
+    <section class="card cadastro-card">
+        <button type="button" id="btn-tema" aria-label="Alternar tema">☾ Escuro</button>
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Fogo Zero">
+        </div>
+        <h1>Fogo Zero</h1>
+        <p class="subtitulo">Crie sua conta</p>
 
-            <!-- action aponta para a tela do app -->
-            <form action="mapa.html">
-                <div class="campo">
-                    <label for="nome">Nome Completo</label>
-                    <div class="input-container">
-                        <input type="text" id="nome" name="nome" placeholder="Ex: Beltrano">
-                    </div>
+        <form id="form-cadastro" action="mapa.html" autocomplete="off">
+            <div class="campo">
+                <label for="nome">Nome Completo</label>
+                <div class="input-container">
+                    <input type="text" id="nome" name="nome" placeholder="Ex: Beltrano" required>
                 </div>
-                <div class="campo">
-                    <label for="email">E-mail</label>
-                    <div class="input-container">
-                        <input type="email" id="email" name="email" placeholder="beltrano@email.com">
-                    </div>
+            </div>
+            <div class="campo">
+                <label for="email">E-mail</label>
+                <div class="input-container">
+                    <input type="email" id="email" name="email" placeholder="beltrano@email.com" required>
                 </div>
-                <div class="campo">
-                    <label for="cpf">CPF</label>
-                    <div class="input-container">
-                        <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
-                            inputmode="numeric">
-                    </div>
+            </div>
+            <div class="campo">
+                <label for="cpf">CPF</label>
+                <div class="input-container">
+                    <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14"
+                           inputmode="numeric">
                 </div>
-                <div class="campo">
-                    <label for="cep">CEP</label>
-                    <div class="input-container">
-                        <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9"
-                            inputmode="numeric">
-                    </div>
+            </div>
+            <div class="campo">
+                <label for="cep">CEP</label>
+                <div class="input-container">
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9"
+                           inputmode="numeric">
                 </div>
-                <div class="campo">
-                    <label for="senha">Senha</label>
-                    <div class="input-container">
-                        <input type="password" id="senha" name="senha" placeholder="••••••••">
-                    </div>
+            </div>
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <div class="input-container">
+                    <input type="password" id="senha" name="senha" placeholder="••••••••" required>
                 </div>
-                <div class="campo">
-                    <label for="confirmar-senha">Confirmar Senha</label>
-                    <div class="input-container">
-                        <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="••••••••">
-                    </div>
+            </div>
+            <div class="campo">
+                <label for="confirmar-senha">Confirmar Senha</label>
+                <div class="input-container">
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="••••••••" required>
                 </div>
+            </div>
 
-                <button type="submit" class="botao">Criar Conta</button>
-            </form>
-            <div class="divisor"></div>
-            <p class="cadastro-link">
-                Já possui uma conta? <a href="login.html">Faça login.</a>
-            </p>
-        </section>
-    </main>
-    <script src="js/temaEscuro.js"></script>
+            <button type="submit" class="botao">Criar Conta</button>
+        </form>
+        <div class="divisor"></div>
+        <p class="cadastro-link">
+            Já possui uma conta? <a href="login.html">Faça login.</a>
+        </p>
+    </section>
+</main>
+<script src="js/temaEscuro.js"></script>
+<script>
+    const formCadastro = document.getElementById('form-cadastro');
+
+    if (formCadastro) {
+        formCadastro.addEventListener('submit', async (evento) => {
+            evento.preventDefault();
+
+            const nome = document.getElementById('nome').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const cpf = document.getElementById('cpf').value.trim();
+            const cep = document.getElementById('cep').value.trim();
+            const senha = document.getElementById('senha').value;
+            const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem. Verifique e tente novamente.');
+                return;
+            }
+
+            let cidadeUf = '';
+            const cepNumerico = cep.replace(/\D/g, '');
+
+            // Tenta descobrir Cidade - UF pelo CEP informado (com limite de 1,5s para não travar)
+            if (cepNumerico.length === 8) {
+                try {
+                    const controller = new AbortController();
+                    const timeout = setTimeout(() => controller.abort(), 1500);
+                    const resposta = await fetch(`https://viacep.com.br/ws/${cepNumerico}/json/`, {
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeout);
+
+                    if (resposta.ok) {
+                        const endereco = await resposta.json();
+                        if (!endereco.erro && endereco.localidade && endereco.uf) {
+                            cidadeUf = `${endereco.localidade} - ${endereco.uf}`;
+                        }
+                    }
+                } catch (_) {
+                    // Segue normalmente com cidadeUf vazio se estiver offline
+                }
+            }
+
+            const novoUsuario = {
+                nome: nome,
+                email: email,
+                cpf: cpf,
+                cep: cep,
+                telefone: '',
+                cidade: cidadeUf
+            };
+
+            localStorage.setItem('usuarioCadastrado', JSON.stringify(novoUsuario));
+            localStorage.setItem('usuarioLogado', JSON.stringify(novoUsuario));
+
+            window.location.href = 'mapa.html';
+        });
+    }
+</script>
 </body>
 
 </html>

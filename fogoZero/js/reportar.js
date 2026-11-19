@@ -346,11 +346,50 @@ if (btnSubmeter) {
         }
     });
 }
+async function carregarDadosUsuario() {
+    const campoNome = document.getElementById('conta-nome');
+    const campoEmail = document.getElementById('conta-email');
+    const campoTelefone = document.getElementById('conta-telefone');
+    const campoCidade = document.getElementById('conta-cidade');
 
-/* =========================================================
-   5. CARREGAR PERFIL DO USUÁRIO (js/usuarios.json)
-   ========================================================= */
-async function carregarUsuarioReportar() {
+    // Encerra a sessão ativa ao clicar em "Sair da Conta"
+    const btnSair = document.querySelector('.painel-rodape a[href="login.html"]');
+    if (btnSair) {
+        btnSair.addEventListener('click', () => {
+            localStorage.removeItem('usuarioLogado');
+        });
+    }
+
+    // Ativa o botão "Salvar Dados" do painel lateral Minha Conta
+    const formConta = document.querySelector('.painel-conta form');
+    if (formConta) {
+        formConta.addEventListener('submit', (evento) => {
+            evento.preventDefault();
+            const usuarioAtualizado = {
+                nome: campoNome ? campoNome.value.trim() : '',
+                email: campoEmail ? campoEmail.value.trim() : '',
+                telefone: campoTelefone ? campoTelefone.value.trim() : '',
+                cidade: campoCidade ? campoCidade.value.trim() : ''
+            };
+            localStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
+            localStorage.setItem('usuarioCadastrado', JSON.stringify(usuarioAtualizado));
+
+            const toggleConta = document.getElementById('toggle-conta');
+            if (toggleConta) toggleConta.checked = false;
+        });
+    }
+
+    // 1. Se houver usuário logado no localStorage, preenche com ele
+    const usuarioLocal = JSON.parse(localStorage.getItem('usuarioLogado'));
+    if (usuarioLocal && (usuarioLocal.nome || usuarioLocal.email)) {
+        if (campoNome) campoNome.value = usuarioLocal.nome || '';
+        if (campoEmail) campoEmail.value = usuarioLocal.email || '';
+        if (campoTelefone) campoTelefone.value = usuarioLocal.telefone || '';
+        if (campoCidade) campoCidade.value = usuarioLocal.cidade || '';
+        return;
+    }
+
+    // 2. Fallback: usa o usuário padrão de js/usuarios.json
     try {
         const resposta = await fetch('js/usuarios.json');
         if (!resposta.ok) return;
@@ -359,18 +398,14 @@ async function carregarUsuarioReportar() {
         const usuario = dados.usuarioAtivo;
         if (!usuario) return;
 
-        const campoNome = document.getElementById('conta-nome');
-        const campoEmail = document.getElementById('conta-email');
-        const campoTelefone = document.getElementById('conta-telefone');
-        const campoCidade = document.getElementById('conta-cidade');
-
         if (campoNome) campoNome.value = usuario.nome || '';
         if (campoEmail) campoEmail.value = usuario.email || '';
         if (campoTelefone) campoTelefone.value = usuario.telefone || '';
         if (campoCidade) campoCidade.value = usuario.cidade || '';
     } catch (erro) {
-        console.error('Erro ao carregar dados do usuário em reportar:', erro);
+        console.error('Erro ao carregar dados do usuário:', erro);
     }
 }
 
-carregarUsuarioReportar();
+
+carregarDadosUsuario();
